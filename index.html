@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Documentation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            background-color: #f8f9fa;
+            margin: 20px;
+            padding: 20px;
+        }
+        h1, h2, h3 {
+            color: #007BFF;
+        }
+        .container {
+            max-width: 900px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+        code {
+            background: #eee;
+            padding: 4px 8px;
+            border-radius: 4px;
+        }
+        .endpoint {
+            background: #f1f1f1;
+            padding: 10px;
+            border-left: 5px solid #007BFF;
+            margin-bottom: 10px;
+        }
+        .response {
+            background: #f1f1f1;
+            padding: 10px;
+            border-left: 5px solid #28A745;
+            font-family: monospace;
+            white-space: pre-wrap;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background: #007BFF;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📌 API Documentation</h1>
+        <p>Welcome to the <strong>[API Name]</strong> documentation. This API allows you to <em>[describe purpose, e.g., retrieve, create, update, delete data]</em>.</p>
+
+        <h2>📍 Base URL</h2>
+        <p><code>https://api.example.com</code></p>
+
+        <h2>🔐 Authentication</h2>
+        <p>This API requires authentication using an API key.</p>
+        <p>Include your API key in the <code>Authorization</code> header:</p>
+        <pre class="endpoint">
+        GET /example-endpoint HTTP/1.1
+        Host: api.example.com
+        Authorization: Bearer YOUR_API_KEY
+        </pre>
+
+        <h2>📌 Endpoints</h2>
+
+        <h3>🟢 Get All Items</h3>
+        <div class="endpoint">
+            <strong>GET</strong> <code>/items</code>
+        </div>
+        <p><strong>Description:</strong> Fetches all items.</p>
+        <p><strong>Example Request:</strong></p>
+        <pre class="endpoint">
+        GET /items HTTP/1.1
+        Host: api.example.com
+        Authorization: Bearer YOUR_API_KEY
+        </pre>
+        <p><strong>Example Response:</strong></p>
+        <pre class="response">
+        {
+            "status": "success",
+            "data": [
+                {
+                    "id": 1,
+                    "name": "Item 1",
+                    "price": 29.99
+                },
+                {
+                    "id": 2,
+                    "name": "Item 2",
+                    "price": 19.99
+                }
+            ]
+        }
+        </pre>
+
+        <h3>🔵 Get Item by ID</h3>
+        <div class="endpoint">
+            <strong>GET</strong> <code>/items/{id}</code>
+        </div>
+        <p><strong>Example Request:</strong></p>
+        <pre class="endpoint">
+        GET /items/1 HTTP/1.1
+        Host: api.example.com
+        Authorization: Bearer YOUR_API_KEY
+        </pre>
+        <p><strong>Example Response:</strong></p>
+        <pre class="response">
+        {
+            "status": "success",
+            "data": {
+                "id": 1,
+                "name": "Item 1",
+                "price": 29.99
+            }
+        }
+        </pre>
+
+        <h3>🟠 Create a New Item</h3>
+        <div class="endpoint">
+            <strong>POST</strong> <code>/items</code>
+        </div>
+        <p><strong>Example Request:</strong></p>
+        <pre class="endpoint">
+        POST /items HTTP/1.1
+        Host: api.example.com
+        Content-Type: application/json
+        Authorization: Bearer YOUR_API_KEY
+
+        {
+            "name": "New Item",
+            "price": 39.99
+        }
+        </pre>
+        <p><strong>Example Response:</strong></p>
+        <pre class="response">
+        {
+            "status": "success",
+            "message": "Item created successfully",
+            "data": {
+                "id": 3,
+                "name": "New Item",
+                "price": 39.99
+            }
+        }
+        </pre>
+
+        <h2>❌ Error Handling</h2>
+        <p>The API uses standard HTTP status codes:</p>
+        <table>
+            <tr>
+                <th>Status Code</th>
+                <th>Meaning</th>
+                <th>Description</th>
+            </tr>
+            <tr>
+                <td><strong>200 OK</strong></td>
+                <td>Success</td>
+                <td>Request was successful.</td>
+            </tr>
+            <tr>
+                <td><strong>400 Bad Request</strong></td>
+                <td>Client Error</td>
+                <td>Invalid request format.</td>
+            </tr>
+            <tr>
+                <td><strong>401 Unauthorized</strong></td>
+                <td>Client Error</td>
+                <td>Authentication failed.</td>
+            </tr>
+            <tr>
+                <td><strong>404 Not Found</strong></td>
+                <td>Client Error</td>
+                <td>Requested resource was not found.</td>
+            </tr>
+            <tr>
+                <td><strong>500 Internal Server Error</strong></td>
+                <td>Server Error</td>
+                <td>Something went wrong on the server.</td>
+            </tr>
+        </table>
+
+        <h2>📞 Support</h2>
+        <p>If you have any questions, please contact us at <strong>support@example.com</strong>.</p>
+    </div>
+</body>
+</html>
