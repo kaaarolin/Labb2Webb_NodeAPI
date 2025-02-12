@@ -40,7 +40,7 @@ app.post('/anime', (req, res) => {
     const newAnime = JSON.stringify({ name, genre, ReleaseYear, Rating });
 
     const options = {
-        hostname: 'localhost',
+        hostname: 'mongodb',
         port: 5287,
         path: '/anime',
         method: 'POST',

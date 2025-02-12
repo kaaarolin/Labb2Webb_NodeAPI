@@ -60,61 +60,53 @@
 <body>
     <div class="container">
         <h1>📌 API Documentation</h1>
-        <p>Welcome to the <strong>[API Name]</strong> documentation. This API allows you to <em>[describe purpose, e.g., retrieve, create, update, delete data]</em>.</p>
+        <p>Welcome to the <strong>[AnimeList API]</strong> documentation. This API allows you to access an database and: <em>[create, retrieve, update and delete data]</em>.</p>
 
         <h2>📍 Base URL</h2>
-        <p><code>https://api.example.com</code></p>
+        <p><code>https://animelistminimalapi-bph8a8fqcwc6dmhk.westeurope-01.azurewebsites.net/animes</code></p>
 
-        <h2>🔐 Authentication</h2>
-        <p>This API requires authentication using an API key.</p>
-        <p>Include your API key in the <code>Authorization</code> header:</p>
-        <pre class="endpoint">
-        GET /example-endpoint HTTP/1.1
-        Host: api.example.com
-        Authorization: Bearer YOUR_API_KEY
-        </pre>
+        
 
         <h2>📌 Endpoints</h2>
 
-        <h3>🟢 Get All Items</h3>
+        <h3>🟢 Get All Animes</h3>
         <div class="endpoint">
-            <strong>GET</strong> <code>/items</code>
+            <strong>Get/animes
+            </strong> 
         </div>
-        <p><strong>Description:</strong> Fetches all items.</p>
+        <p><strong>Description:</strong> Fetches all animes.</p>
         <p><strong>Example Request:</strong></p>
         <pre class="endpoint">
-        GET /items HTTP/1.1
-        Host: api.example.com
-        Authorization: Bearer YOUR_API_KEY
+            GET/animes
         </pre>
         <p><strong>Example Response:</strong></p>
         <pre class="response">
-        {
-            "status": "success",
-            "data": [
-                {
-                    "id": 1,
-                    "name": "Item 1",
-                    "price": 29.99
+            "id": {
+                "timestamp": 1739190760,
+                "creationTime": "2025-02-10T12:32:40Z"
                 },
-                {
-                    "id": 2,
-                    "name": "Item 2",
-                    "price": 19.99
-                }
-            ]
-        }
+                "name": "Naruto",
+                "genre": "Adventure",
+                "releaseYear": 1997,
+                "rating": "3/5"
+                },
         </pre>
 
-        <h3>🔵 Get Item by ID</h3>
+        <h3>🔵 Get anime by ID</h3>
         <div class="endpoint">
-            <strong>GET</strong> <code>/items/{id}</code>
+            <strong>GET</strong> <code>/anime/{id}</code>
         </div>
         <p><strong>Example Request:</strong></p>
         <pre class="endpoint">
-        GET /items/1 HTTP/1.1
-        Host: api.example.com
-        Authorization: Bearer YOUR_API_KEY
+            "id": {
+                "timestamp": 1739190760,
+                "creationTime": "2025-02-10T12:32:40Z"
+                },
+                "name": "Naruto",
+                "genre": "Adventure",
+                "releaseYear": 1997,
+                "rating": "3/5"
+                },
         </pre>
         <p><strong>Example Response:</strong></p>
         <pre class="response">
@@ -192,8 +184,6 @@
             </tr>
         </table>
 
-        <h2>📞 Support</h2>
-        <p>If you have any questions, please contact us at <strong>support@example.com</strong>.</p>
     </div>
 </body>
 </html>
