@@ -4,7 +4,7 @@ const app = express();
 
 app.use(express.json()); // Gör så att vi kan läsa JSON-body i requests
 
-const DOTNET_API_URL = 'http://localhost:5287';
+const DOTNET_API_URL = 'https://animelistminimalapi-bph8a8fqcwc6dmhk.westeurope-01.azurewebsites.net/animes';
 
 // 🔹 GET - Hämta alla anime från .NET API
 app.get('/anime', (req, res) => {
