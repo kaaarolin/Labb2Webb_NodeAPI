@@ -16,7 +16,7 @@ app.use(cors({
 const DOTNET_API_URL = 'https://animelistminimalapi-bph8a8fqcwc6dmhk.westeurope-01.azurewebsites.net/animes';
 
 // 🔹 GET - Hämta alla anime från .NET API
-app.get('/anime', (req, res) => {
+app.get('/animes', (req, res) => {
     http.get(`${DOTNET_API_URL}/animes`, (response) => {
         let data = '';
 
@@ -39,7 +39,7 @@ app.get('/anime', (req, res) => {
 });
 
 // 🔹 POST - Lägg till ny anime i .NET API
-app.post('/anime', (req, res) => {
+app.post('/animes', (req, res) => {
     const { name, genre, ReleaseYear, Rating } = req.body;
 
     if (!name || !genre || !ReleaseYear || !Rating) {
@@ -49,9 +49,8 @@ app.post('/anime', (req, res) => {
     const newAnime = JSON.stringify({ name, genre, ReleaseYear, Rating });
 
     const options = {
-        hostname: 'mongodb',
-        port: 5287,
-        path: '/anime',
+        hostname: 'https://animelistminimalapi-bph8a8fqcwc6dmhk.westeurope-01.azurewebsites.net/animes',
+        path: '/animes',
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -85,7 +84,7 @@ app.post('/anime', (req, res) => {
 });
 
 // 🔹 GET - Hämta anime efter ID från .NET API
-app.get('/anime/:id', (req, res) => {
+app.get('/animes/:id', (req, res) => {
     const animeId = req.params.id;
 
     http.get(`${DOTNET_API_URL}/anime/${animeId}`, (response) => {

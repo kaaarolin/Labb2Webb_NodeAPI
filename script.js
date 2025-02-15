@@ -1,7 +1,7 @@
 const apiUrl = "https://animelistminimalapi-bph8a8fqcwc6dmhk.westeurope-01.azurewebsites.net/animes";
 
 // 🔹 Hämta alla anime
-async function fetchAnime() { // Ändrat från fetchAnimes() till fetchAnime()
+async function fetchAnime() {
     try {
         const response = await fetch(apiUrl);
         if (!response.ok) throw new Error("Failed to fetch anime");
@@ -13,7 +13,7 @@ async function fetchAnime() { // Ändrat från fetchAnimes() till fetchAnime()
         data.forEach(anime => {
             const li = document.createElement('li');
             li.classList.add('list-group-item');
-            li.textContent = `${anime.name} - ${anime.genre} (${anime.ReleaseYear}) - Betyg: ${anime.Rating}`;
+            li.textContent = `${anime.name} - ${anime.genre} (${anime.releaseYear || 'Okänt år'}) - Betyg: ${anime.rating || 'Ej betygsatt'}`;
             list.appendChild(li);
         });
     } catch (error) {
@@ -27,10 +27,12 @@ document.getElementById("animeForm").addEventListener("submit", async function(e
 
     const name = document.getElementById("name").value;
     const genre = document.getElementById("genre").value;
-    const releaseYear = parseInt(document.getElementById("ReleaseYear").value); // 🔹 parseInt
-    const rating = parseFloat(document.getElementById("Rating").value); // 🔹 parseFloat
+    const releaseYear = parseInt(document.getElementById("ReleaseYear").value, 10); // 🔹 Konvertera releaseYear korrekt
+    const rating = document.getElementById("Rating").value.toString(); // 🔹 Se till att rating är en sträng
 
-    const newAnime = { name, genre, releaseYear, rating }; // 🔹 Fixade egenskaper
+    const newAnime = { name, genre, releaseYear, rating };
+
+    console.log("Skickar data till API:", JSON.stringify(newAnime)); // 🔹 Debugga JSON
 
     try {
         const response = await fetch(apiUrl, {
@@ -66,11 +68,10 @@ async function fetchAnimeById() {
         }
 
         const anime = await response.json();
-        document.getElementById("animeDetails").innerText = `Found: ${anime.name} - ${anime.genre} (${anime.ReleaseYear})`;
+        document.getElementById("animeDetails").innerText = `Found: ${anime.name} - ${anime.genre} (${anime.releaseYear || 'Okänt år'}) - Betyg: ${anime.rating || 'Ej betygsatt'}`;
     } catch (error) {
         console.error("Error fetching anime by ID:", error);
         document.getElementById("animeDetails").innerText = "Error fetching data.";
     }
 }
-
 
