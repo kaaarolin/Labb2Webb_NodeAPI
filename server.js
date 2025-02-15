@@ -1,8 +1,17 @@
 const http = require('http');
 const express = require("express");
+const { opendirSync } = require('fs');
 const app = express();
 
 app.use(express.json()); // Gör så att vi kan läsa JSON-body i requests
+
+const cors = require("cors"); // 🔹 Lägg till denna rad!
+
+
+app.use(cors({
+    origin : 'http://127.0.0.1:5500',
+    
+}));
 
 const DOTNET_API_URL = 'https://animelistminimalapi-bph8a8fqcwc6dmhk.westeurope-01.azurewebsites.net/animes';
 
